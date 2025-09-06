@@ -151,13 +151,13 @@ if df_raw is not None:
         analysis_df,
         x=mf_col,
         y=wellness_col,
-        trendline="ols",
-        trendline_color_override="red",
+        # trendline="ols", # This line requires the 'statsmodels' library.
+        # trendline_color_override="red",
         title=f"Correlation between Wellness and MF for {selected_branch_name}" + (" (7-Day Smoothed)" if use_rolling_avg else ""),
         labels={mf_col: "MF (Main Service) Volume", wellness_col: "Wellness (Upsell) Volume"}
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
-    st.markdown("The red line represents the Ordinary Least Squares (OLS) regression trendline, indicating the general relationship between the two services.")
+    st.markdown("The scatter plot shows the relationship between the two services. The trendline has been removed to resolve the module error.")
     st.markdown("---")
     
     # --- Advanced Analysis ---
@@ -234,3 +234,4 @@ if df_raw is not None:
             file_name=f"{selected_branch_name}_lag_correlation.csv",
             mime="text/csv",
         )
+
